@@ -22,7 +22,6 @@ android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
         minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
 
         externalNativeBuild {
             cmake {
@@ -35,6 +34,11 @@ android {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
         }
+    }
+    namespace 'com.google.android.samples.dynamicfeatures.ondemand.ccode'
+
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 

@@ -21,10 +21,22 @@ android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
         minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+    }
+    namespace 'com.google.android.samples.dynamicfeatures.ondemand.kotlin'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 dependencies {
     implementation project(':app')
+    implementation 'com.salesforce.service:messaging-inapp-ui:1.5.1'
 }

@@ -37,24 +37,37 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(17))
     }
 
-    dynamicFeatures = [':assets',
-                       ':kotlin',
-                       ':java',
-                       ':native']
+    dynamicFeatures = [':kotlin']
+    namespace 'com.google.android.samples.dynamicfeatures'
 
 }
 
 dependencies {
     // Libraries which can be re-used in other modules should use the `api` keyword.
     // This way they can be shared with dependent feature modules.
+    implementation 'androidx.annotation:annotation:1.7.1'
+    api 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    api 'com.google.android.play:feature-delivery:2.1.0'
 
-    implementation 'androidx.annotation:annotation:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    api 'com.google.android.material:material:1.4.0'
-    api "com.google.android.play:core:${versions.playcore}"
+    // For Kotlin users, also add the Kotlin extensions library for Play Feature Delivery:
+    api 'com.google.android.play:feature-delivery-ktx:2.1.0'
+    implementation "com.google.android.material:material:1.11.0"
+
+    // A few artifacts were missing from the dynamic module. Adding these here resolved the issue. May be related to this issue:
+    // https://issuetracker.google.com/issues/324853419
+    implementation "androidx.collection:collection:1.4.0"
+    implementation "androidx.core:core:1.13.0"
+    implementation "androidx.core:core-ktx:1.13.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.8.22"
 }

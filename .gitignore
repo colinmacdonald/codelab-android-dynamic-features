@@ -10,3 +10,6 @@
 /captures
 .externalNativeBuild
 release
+/app/debug/app-debug.aab
+/features/native/.cxx/*
+my_app.apks

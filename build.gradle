@@ -19,11 +19,10 @@
 buildscript {
 
     ext.versions = [
-            'compileSdk'        : 31,
-            'minSdk'            : 16,
-            'targetSdk'         : 31,
-            'kotlin'            : '1.6.10',
-            'playcore'          : '1.10.3',
+            'compileSdk': 34,
+            'minSdk'    : 23,
+            'targetSdk' : 34,
+            'kotlin'    : '1.8.22'
     ]
 
     ext.names = [
@@ -35,7 +34,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:8.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -47,5 +46,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url = "https://s3.amazonaws.com/inapp.salesforce.com/public/android" }
     }
 }
